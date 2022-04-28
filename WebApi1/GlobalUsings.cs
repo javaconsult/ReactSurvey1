@@ -1,0 +1,10 @@
+﻿global using Azure.Identity;
+global using ClassLibrary1.Entity;
+global using ClassLibrary1.Repository;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Azure;
+global using Microsoft.IdentityModel.Tokens;
+global using System.Text;
+global using WebApi.Services;

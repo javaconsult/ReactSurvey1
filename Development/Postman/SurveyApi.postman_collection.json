@@ -1,0 +1,457 @@
+{
+	"info": {
+		"_postman_id": "a2e1db8f-4dbd-4830-b0d7-70cd3eba59d2",
+		"name": "SurveyApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const user = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Has properties\", function () {\r",
+									"    pm.expect(user).to.have.property('displayName');\r",
+									"    pm.expect(user).to.have.property('username');\r",
+									"    pm.expect(user).to.have.property('token');\r",
+									"});\r",
+									"\r",
+									"if (pm.test(\"Has properties\")) {\r",
+									"    pm.globals.set('token', user.token);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Global token has been set\", function() {\r",
+									"    var token = pm.globals.get('token');\r",
+									"    pm.expect(token).to.eql(user.token);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\": \"simondineen@gmail.com\",\r\n\t\"password\": \"Pa$$w0rd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/account/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const user = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Has properties\", function () {\r",
+									"    pm.expect(user).to.have.property('displayName');\r",
+									"    pm.expect(user).to.have.property('username');\r",
+									"    pm.expect(user).to.have.property('token');\r",
+									"});\r",
+									"\r",
+									"if (pm.test(\"Has properties\")) {\r",
+									"    pm.globals.set('token', user.token);\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Global token has been set\", function() {\r",
+									"    var token = pm.globals.get('token');\r",
+									"    pm.expect(token).to.eql(user.token);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"email\": \"simondineen@gmail.com\",\r\n\t\"username\": \"sdineen\",\r\n\t\"displayName\": \"Simon\",\r\n\t\"password\": \"Pa$$w0rd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/account/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Survey",
+			"item": [
+				{
+					"name": "ListByLoggedInUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/survey",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"survey"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/survey/{{surveyId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"{{surveyId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ResultsBySurveyId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/survey/{{surveyId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"{{surveyId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetParticipantsBySurvey",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/survey/participants/{{surveyId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"participants",
+								"{{surveyId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SelectedOptionsByParticipantId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/survey/selections/{{participantId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"survey",
+								"selections",
+								"{{participantId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create IPSS survey",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const surveyId = pm.response.json();\r",
+									"pm.globals.set('surveyId', surveyId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"IPSS\",\r\n    \"description\": \"International prostate symptom score\",\r\n    \"questions\": [\r\n        {\r\n            \"questionNumber\": 1,\r\n            \"heading\": \"Incomplete emptying\",\r\n            \"text\": \"Over the past month, how often have you had a sensation of not emptying your bladder completely after you finish urinating?\",\r\n            \"options\": [\r\n                {\r\n                    \"text\": \"Not at all\"\r\n                },\r\n                {\r\n                    \"text\": \"Less than 1 time in 5\"\r\n                },\r\n                {\r\n                    \"text\": \"Less than half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"About half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"More than half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"Almost always\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"questionNumber\": 2,\r\n            \"heading\": \"Frequency\",\r\n            \"text\": \"Over the past month, how often have you had to urinate again less than two hours after you finished urinating?\",\r\n            \"options\": [\r\n                {\r\n                    \"text\": \"Not at all\"\r\n                },\r\n                {\r\n                    \"text\": \"Less than 1 time in 5\"\r\n                },\r\n                {\r\n                    \"text\": \"Less than half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"About half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"More than half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"Almost always\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"questionNumber\": 3,\r\n            \"heading\": \"Intermittency\",\r\n            \"text\": \"Over the past month, how often have you found you stopped and started again several times when you urinated?\",\r\n            \"options\": [\r\n                {\r\n                    \"text\": \"Not at all\"\r\n                },\r\n                {\r\n                    \"text\": \"Less than 1 time in 5\"\r\n                },\r\n                {\r\n                    \"text\": \"Less than half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"About half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"More than half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"Almost always\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"questionNumber\": 4,\r\n            \"heading\": \"Urgency\",\r\n            \"text\": \"Over the last month, how difficult have you found it to postpone urination?\",\r\n            \"options\": [\r\n                {\r\n                    \"text\": \"Not at all\"\r\n                },\r\n                {\r\n                    \"text\": \"Less than 1 time in 5\"\r\n                },\r\n                {\r\n                    \"text\": \"Less than half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"About half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"More than half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"Almost always\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"questionNumber\": 5,\r\n            \"heading\": \"Weak stream\",\r\n            \"text\": \"Over the past month, how often have you had a weak urinary stream?\",\r\n            \"options\": [\r\n                {\r\n                    \"text\": \"Not at all\"\r\n                },\r\n                {\r\n                    \"text\": \"Less than 1 time in 5\"\r\n                },\r\n                {\r\n                    \"text\": \"Less than half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"About half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"More than half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"Almost always\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"questionNumber\": 6,\r\n            \"heading\": \"Straining\",\r\n            \"text\": \"Over the past month, how often have you had to push or strain to begin urination?\",\r\n            \"options\": [\r\n                {\r\n                    \"text\": \"Not at all\"\r\n                },\r\n                {\r\n                    \"text\": \"Less than 1 time in 5\"\r\n                },\r\n                {\r\n                    \"text\": \"Less than half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"About half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"More than half the time\"\r\n                },\r\n                {\r\n                    \"text\": \"Almost always\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"questionNumber\": 7,\r\n            \"heading\": \"Nocturia\",\r\n            \"text\": \"Over the past month, many times did you most typically get up to urinate from the time you went to bed until the time you got up in the morning?\",\r\n            \"options\": [\r\n                {\r\n                    \"text\": \"None\"\r\n                },\r\n                {\r\n                    \"text\": \"1 time\"\r\n                },\r\n                {\r\n                    \"text\": \"2 times\"\r\n                },\r\n                {\r\n                    \"text\": \"3 times\"\r\n                },\r\n                {\r\n                    \"text\": \"4 times\"\r\n                },\r\n                {\r\n                    \"text\": \"5 times or more\"\r\n                }\r\n            ]\r\n        },\r\n                {\r\n            \"questionNumber\": 8,\r\n            \"heading\": \"Quality of life due to urinary symptoms\",\r\n            \"text\": \"If you were to spend the rest of your life with your urinary condition the way it is now, how would you feel about that?\",\r\n            \"options\": [\r\n                {\r\n                    \"text\": \"Delighted\"\r\n                },\r\n                {\r\n                    \"text\": \"Pleased\"\r\n                },\r\n                {\r\n                    \"text\": \"Mostly satisfied\"\r\n                },\r\n                {\r\n                    \"text\": \"Mixed: equally satisfied / dissatisfied\"\r\n                },\r\n                {\r\n                    \"text\": \"Mostly dissatisfied\"\r\n                },\r\n                {\r\n                    \"text\": \"Unhappy\"\r\n                },\r\n                {\r\n                    \"text\": \"Terrible\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/survey",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"survey"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Coffee survey",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const surveyId = pm.response.json();\r",
+									"pm.globals.set('surveyId', surveyId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Coffee\",\r\n    \"description\": \"Simon's coffee emporium\",\r\n    \"questions\": [\r\n        {\r\n            \"questionNumber\": 1,\r\n            \"heading\": \"Coffee type\",\r\n            \"text\": \"What type of coffee did you order?\",\r\n            \"options\": [\r\n                {\r\n                    \"text\": \"Espresso\"\r\n                },\r\n                {\r\n                    \"text\": \"Cappuccino\"\r\n                },\r\n                {\r\n                    \"text\": \"Latte\"\r\n                },\r\n                {\r\n                    \"text\": \"Macchiato\"\r\n                },\r\n                {\r\n                    \"text\": \"Americano\"\r\n                },\r\n                {\r\n                    \"text\": \"Flat White\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"questionNumber\": 2,\r\n            \"heading\": \"Quality\",\r\n            \"text\": \"How would you rate your drink?\",\r\n            \"options\": [\r\n                {\r\n                    \"text\": \"Excellent\"\r\n                },\r\n                {\r\n                    \"text\": \"Good\"\r\n                },\r\n                {\r\n                    \"text\": \"Mediocre\"\r\n                },\r\n                {\r\n                    \"text\": \"Poor\"\r\n                },\r\n                {\r\n                    \"text\": \"Undrinkable\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/survey",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"survey"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "KeyVault",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/KeyVault",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"KeyVault"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CurrentUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Participant",
+			"item": [
+				{
+					"name": "Survey submission",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Id\": \"{{participantId}}\",\r\n  \"selections\": [\r\n    {\r\n      \"questionId\": 1,\r\n      \"selectedOptionId\": 2\r\n    },\r\n    {\r\n      \"questionId\": 2,\r\n      \"selectedOptionId\": 8\r\n    }\r\n  ]  \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/participant",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"participant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Participant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const json = pm.response.json();\r",
+									"pm.globals.set('participantId', json.participantId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"surveyId\": \"{{surveyId}}\",\r\n    \"Email\": \"simondineen7@gmail.com\",\r\n    \"Name\": \"Simon Dineen\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/participant",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"participant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Survey questions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/participant/{{participantId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"participant",
+								"{{participantId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

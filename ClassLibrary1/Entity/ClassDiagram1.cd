@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ClassLibrary1.Entity.AdminUser">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Entity\AdminUser.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Surveys" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ClassLibrary1.Entity.Option">
+    <Position X="9.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAEAAAACAQAAAA=</HashCode>
+      <FileName>Entity\Option.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Question" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ClassLibrary1.Entity.Participant">
+    <Position X="7.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACCAAAACAAAAAAAAAAACQAAAAAAAAAAACAQAAAAAA=</HashCode>
+      <FileName>Entity\Participant.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Survey" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Selections" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ClassLibrary1.Entity.Question">
+    <Position X="7.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAgAAAAAEAgAAAAAAAAAAAAAAAACASCBAAAA=</HashCode>
+      <FileName>Entity\Question.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Survey" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Options" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="ClassLibrary1.Entity.Selection">
+    <Position X="9.75" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAQAQAAAA=</HashCode>
+      <FileName>Entity\Selection.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Participant" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ClassLibrary1.Entity.Survey">
+    <Position X="5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAAAAEACABAAAAACA=</HashCode>
+      <FileName>Entity\Survey.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AdminUser" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Questions" />
+      <Property Name="Participants" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

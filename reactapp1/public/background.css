@@ -1,0 +1,7 @@
+﻿.background-image {
+    background-image: url(./greyStripe2.png);
+    background-position: top;
+    min-height: 100%;
+    height: 100vh;
+    position: relative;
+  }

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="ClassLibrary1.Repository.SurveyDbContext">
+    <Position X="8" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAACAAAAAAAAAEACAAABBAAAA=</HashCode>
+      <FileName>Repository\SurveyDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClassLibrary1.Repository.SurveyRepository">
+    <Position X="2" Y="1" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAACQAAAAAAAAgAAgAAAAAAAAAAAAAAAAAAgAIQAAIA=</HashCode>
+      <FileName>Repository\SurveyRepository.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="context" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ClassLibrary1.Repository.ParticipantRepository">
+    <Position X="2" Y="4.5" Width="5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAAAAAAAAAAAAAAAAAAAAIAgAAAAAQIAAACA=</HashCode>
+      <FileName>Repository\ParticipantRepository.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="context" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
